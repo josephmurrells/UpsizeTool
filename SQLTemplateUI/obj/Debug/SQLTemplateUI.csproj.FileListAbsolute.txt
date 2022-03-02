@@ -1,0 +1,14 @@
+C:\Users\Job0\source\repos\SQLTemplateUI\SQLTemplateUI\bin\Debug\SQLTemplateUI.exe.config
+C:\Users\Job0\source\repos\SQLTemplateUI\SQLTemplateUI\bin\Debug\SQLTemplateUI.exe
+C:\Users\Job0\source\repos\SQLTemplateUI\SQLTemplateUI\bin\Debug\SQLTemplateUI.pdb
+C:\Users\Job0\source\repos\SQLTemplateUI\SQLTemplateUI\obj\Debug\SQLTemplateUI.csproj.AssemblyReference.cache
+C:\Users\Job0\source\repos\SQLTemplateUI\SQLTemplateUI\obj\Debug\SQLTemplateUI.Form1.resources
+C:\Users\Job0\source\repos\SQLTemplateUI\SQLTemplateUI\obj\Debug\SQLTemplateUI.Properties.Resources.resources
+C:\Users\Job0\source\repos\SQLTemplateUI\SQLTemplateUI\obj\Debug\SQLTemplateUI.csproj.GenerateResource.cache
+C:\Users\Job0\source\repos\SQLTemplateUI\SQLTemplateUI\obj\Debug\SQLTemplateUI.csproj.CoreCompileInputs.cache
+C:\Users\Job0\source\repos\SQLTemplateUI\SQLTemplateUI\obj\Debug\SQLTemplateUI.exe
+C:\Users\Job0\source\repos\SQLTemplateUI\SQLTemplateUI\obj\Debug\SQLTemplateUI.pdb
+C:\Users\Job0\source\repos\SQLTemplateUI\SQLTemplateUI\bin\Debug\SQLTemplateUI.exe.manifest
+C:\Users\Job0\source\repos\SQLTemplateUI\SQLTemplateUI\bin\Debug\SQLTemplateUI.application
+C:\Users\Job0\source\repos\SQLTemplateUI\SQLTemplateUI\obj\Debug\SQLTemplateUI.exe.manifest
+C:\Users\Job0\source\repos\SQLTemplateUI\SQLTemplateUI\obj\Debug\SQLTemplateUI.application
