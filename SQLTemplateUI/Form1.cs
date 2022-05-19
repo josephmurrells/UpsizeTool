@@ -60,12 +60,13 @@ namespace SQLTemplateUI
             outputText.Text = $"EXACTData is {totalsize}GB (rounded up)";
             dbSelect.Text = Convert.ToString(totalsize);
         }
-        private void AllInOne_Click(object sender, EventArgs e)
+        private async void AllInOne_Click(object sender, EventArgs e)
         {
-            progressBar1.Value = 0;
             string newLine = Environment.NewLine;
-            Stopwatch stopWatch = new Stopwatch();
-            var UpsizeData = new SQL(slugBox.Text, sqlpathBox.Text, SQLServer.Text, stagingBox.Text, dbSelect.Text, exactData.Text, threads.Text);
+            var UpsizeMe = new MainProcess(slugBox.Text,sqlpathBox.Text, SQLServer.Text,stagingBox.Text, dbSelect.Text, exactData.Text, threads.Text);
+            var ZipMe = new Zip(sqlpathBox.Text, slugBox.Text, stagingBox.Text);
+            string elapsedTime = null;
+
             var ErrorCheck = new ErrorChecking(slugBox.Text, sqlpathBox.Text, exactData.Text, stagingBox.Text, dbSelect.Text, SQLServer.Text);
 
             if (ErrorCheck.ErrorCheck() == 0)
@@ -73,47 +74,36 @@ namespace SQLTemplateUI
                 return;
             }
 
-            stopWatch.Start();
-            outputText.Text = "CREATING DB PLEASE WAIT....";
-
-            Task CreateDB = Task.Run(() =>
+            progressBar1.MarqueeAnimationSpeed = 10;
+            await Task.Run(() =>
             {
-                UpsizeData.CreateDb();
+                elapsedTime = UpsizeMe.ProcessRun();
+                
             });
 
-            progressBar1.Increment(25);
-            CreateDB.Wait();
-            UpsizeData.RestoreDb();
-            progressBar1.Increment(25);
-            outputText.Text = "RUNNING UPSIZE PLEASE WAIT....";
-            UpsizeData.RunUpsize();
-            while  (Process.GetProcessesByName("parallelupsizer").Length > 0) { }
-            progressBar1.Increment(25);
-            outputText.Text = "CREATING BACKUP PLEASE WAIT....";
-            Task BDB = Task.Run(() =>
-            {
-                UpsizeData.BackupDb();
-            });
-            BDB.Wait();
-            UpsizeData.DetachDb();
-            progressBar1.Increment(25);
-            stopWatch.Stop();
-            TimeSpan ts = stopWatch.Elapsed;
-            string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
-            ts.Hours, ts.Minutes, ts.Seconds,
-            ts.Milliseconds / 10);
-            outputText.Text = $"Creating backup completed...Files output to {sqlpathBox.Text}"+newLine+""+newLine+$"Finished in...{elapsedTime}";
-            Properties.Settings.Default.SQLPath = SQLServer.Text;
-            Properties.Settings.Default.Save();
+            progressBar1.Style = ProgressBarStyle.Blocks;
+            progressBar1.MarqueeAnimationSpeed = 0;
             progressBar1.Value = 0;
-            
+
+            outputText.Text = $"Creating backup completed...Files output to {sqlpathBox.Text}" + newLine + "" + newLine + $"Finished in...{elapsedTime}";
+
             DialogResult dialogResult = MessageBox.Show($"Successfully Created Backup in {sqlpathBox.Text}, do you want to zip the backup?", "Zip backup?", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                outputText.Text += newLine + "Zipping backup please wait..."+newLine+"";
-                progressBar1.Increment(50);
-                Zip.ZipBackup(sqlpathBox.Text, slugBox.Text, stagingBox.Text);
-                progressBar1.Increment(50);
+                outputText.Text += newLine + "Zipping backup please wait..." + newLine + "";
+
+                progressBar1.Style = ProgressBarStyle.Marquee;
+                progressBar1.MarqueeAnimationSpeed = 10;
+
+                await Task.Run(() =>
+                {
+                    ZipMe.ZipBackup();
+                });
+
+                progressBar1.Style = ProgressBarStyle.Blocks;
+                progressBar1.MarqueeAnimationSpeed = 0;
+                progressBar1.Value = 0;
+
                 outputText.Text += newLine + $"File has been zipped in the following location {sqlpathBox.Text}\\{slugBox.Text}-{stagingBox.Text}.zip";
             }
             else if (dialogResult == DialogResult.No)

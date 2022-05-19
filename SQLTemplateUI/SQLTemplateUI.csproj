@@ -99,6 +99,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="GenerateTemplate.cs" />
+    <Compile Include="MainProcess.cs" />
     <Compile Include="Neymar.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

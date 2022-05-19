@@ -9,9 +9,20 @@ using System.Windows.Forms;
 
 namespace SQLTemplateUI
 {
-    public static class Zip
+    public class Zip
     {
-        public static void ZipBackup(string SQLPath, string SlugBox, string staging)
+        string SQLPath { get; set; }
+        string SlugBox { get; set; }
+        string staging { get; set; }
+
+        public Zip (string sqlpath, string slugbox, string staging)
+        {
+            this.SQLPath = sqlpath;
+            this.SlugBox = slugbox;
+            this.staging = staging;
+        }
+
+        public void ZipBackup()
         {
 
              if (File.Exists($"{SQLPath}\\{SlugBox}-{staging}.bak"))
