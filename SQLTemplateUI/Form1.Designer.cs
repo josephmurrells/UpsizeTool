@@ -252,7 +252,6 @@ namespace SQLTemplateUI
             this.ZipButton.Text = "Zip Backup";
             this.ZipButton.UseVisualStyleBackColor = true;
             this.ZipButton.Visible = false;
-            this.ZipButton.Click += new System.EventHandler(this.ZipButton_Click);
             // 
             // label9
             // 
