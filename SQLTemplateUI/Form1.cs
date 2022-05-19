@@ -53,17 +53,21 @@ namespace SQLTemplateUI
         {
             var folderPath = new FolderBrowserDialog();
             folderPath.SelectedPath = sqlpathBox.Text;
-            if(folderPath.ShowDialog() == DialogResult.OK) { exactData.Text = folderPath.SelectedPath; }
-            var dir = new DirectoryInfo(exactData.Text);
-            double totalsize = dir.GetFiles().Sum(file => file.Length);
-            totalsize =+ Math.Ceiling(totalsize / 1024 / 1024 / 1024);
-            outputText.Text = $"EXACTData is {totalsize}GB (rounded up)";
-            dbSelect.Text = Convert.ToString(totalsize);
+            if(folderPath.ShowDialog() == DialogResult.OK) 
+            { 
+                exactData.Text = folderPath.SelectedPath; 
+                var dir = new DirectoryInfo(exactData.Text);
+                double totalsize = dir.GetFiles().Sum(file => file.Length);
+                totalsize = +Math.Ceiling(totalsize / 1024 / 1024 / 1024);
+                outputText.Text = $"EXACTData is {totalsize}GB (rounded up)";
+                dbSelect.Text = Convert.ToString(totalsize);
+            }
+
         }
         private async void AllInOne_Click(object sender, EventArgs e)
         {
             string newLine = Environment.NewLine;
-            var UpsizeMe = new MainProcess(slugBox.Text,sqlpathBox.Text, SQLServer.Text,stagingBox.Text, dbSelect.Text, exactData.Text, threads.Text);
+            var UpsizeMe = new MainProcess(slugBox.Text,sqlpathBox.Text, SQLServer.Text,stagingBox.Text, dbSelect.Text, exactData.Text, threads.Text, this);
             var ZipMe = new Zip(sqlpathBox.Text, slugBox.Text, stagingBox.Text);
             string elapsedTime = null;
 

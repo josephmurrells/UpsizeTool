@@ -364,7 +364,6 @@ namespace SQLTemplateUI
         private System.Windows.Forms.Button Generate;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.NumericUpDown dbSelect;
-        private System.Windows.Forms.TextBox outputText;
         private System.Windows.Forms.TextBox sqlpathBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button sqlButton;
@@ -383,6 +382,7 @@ namespace SQLTemplateUI
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.NumericUpDown threads;
         private System.Windows.Forms.Label label10;
+        public System.Windows.Forms.TextBox outputText;
     }
 }
 
