@@ -109,8 +109,10 @@ namespace SQLTemplateUI
                     $"TO DISK = '{SQLPath}\\{SlugName}-{stagingProduction}.bak'" +
                     "WITH STATS";
 
-                SqlCommand myCommand = new SqlCommand(str, myConn);
-                myCommand.CommandTimeout = 600;
+                SqlCommand myCommand = new SqlCommand(str, myConn)
+                {
+                    CommandTimeout = 600
+                };
                 try
                 {
                     myConn.Open();
@@ -139,8 +141,10 @@ namespace SQLTemplateUI
                 str = $"EXEC sp_detach_db '{SlugName}-{stagingProduction}', 'true'";
 
 
-                SqlCommand myCommand = new SqlCommand(str, myConn);
-                myCommand.CommandTimeout = 600;
+                SqlCommand myCommand = new SqlCommand(str, myConn)
+                {
+                    CommandTimeout = 600
+                };
                 try
                 {
                     myConn.Open();
