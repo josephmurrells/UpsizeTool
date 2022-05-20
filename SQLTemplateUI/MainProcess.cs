@@ -31,13 +31,8 @@ namespace SQLTemplateUI
         }
         public string ProcessRun()
         {
-
-            string newLine = Environment.NewLine;
             Stopwatch stopWatch = new Stopwatch();
             var UpsizeData = new SQL(SlugName, SQLPath, SQLServer, stagingProduction, dbSize, ExactData, Threads);
-
-
-            
 
             stopWatch.Start();
             WriteTextSafe("Creating DB Please Wait....");

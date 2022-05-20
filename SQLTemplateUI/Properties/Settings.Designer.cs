@@ -37,7 +37,7 @@ namespace SQLTemplateUI.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("5")]
         public string Threads {
             get {
                 return ((string)(this["Threads"]));

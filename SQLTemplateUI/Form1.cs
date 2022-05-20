@@ -72,6 +72,12 @@ namespace SQLTemplateUI
             var ZipMe = new Zip(sqlpathBox.Text, slugBox.Text, stagingBox.Text);
             string elapsedTime = null;
 
+            AllInOne.Enabled = false;
+            button1.Enabled = false;
+            Generate.Enabled = false; 
+            sqlButton.Enabled = false;
+            exactButton.Enabled = false;
+
             var ErrorCheck = new ErrorChecking(slugBox.Text, sqlpathBox.Text, exactData.Text, stagingBox.Text, dbSelect.Text, SQLServer.Text);
 
             if (ErrorCheck.ErrorCheck() == 0)
@@ -120,6 +126,12 @@ namespace SQLTemplateUI
             Neymar.OpenNeymar(stagingBox.Text, slugBox.Text, siteID.Text, sqlpathBox.Text);
 
             progressBar1.Style = ProgressBarStyle.Marquee;
+
+            AllInOne.Enabled = true;
+            button1.Enabled = true;
+            Generate.Enabled = true;
+            sqlButton.Enabled = true;
+            exactButton.Enabled = true;
         }
 
         private void button1_Click_1(object sender, EventArgs e)

@@ -6,7 +6,7 @@
       <Value Profile="(Default)">localhost</Value>
     </Setting>
     <Setting Name="Threads" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">5</Value>
     </Setting>
   </Settings>
 </SettingsFile>
