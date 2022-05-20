@@ -51,7 +51,6 @@ namespace SQLTemplateUI
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.label8 = new System.Windows.Forms.Label();
             this.SQLServer = new System.Windows.Forms.TextBox();
-            this.ZipButton = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.siteID = new System.Windows.Forms.NumericUpDown();
             this.button1 = new System.Windows.Forms.Button();
@@ -171,6 +170,7 @@ namespace SQLTemplateUI
             this.exactData.Name = "exactData";
             this.exactData.Size = new System.Drawing.Size(205, 20);
             this.exactData.TabIndex = 19;
+            this.exactData.TextChanged += new System.EventHandler(this.exactData_TextChanged);
             // 
             // label5
             // 
@@ -222,9 +222,10 @@ namespace SQLTemplateUI
             // progressBar1
             // 
             this.progressBar1.Location = new System.Drawing.Point(3, 348);
-            this.progressBar1.MarqueeAnimationSpeed = 10;
+            this.progressBar1.MarqueeAnimationSpeed = 0;
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(801, 20);
+            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
             this.progressBar1.TabIndex = 25;
             // 
             // label8
@@ -242,17 +243,6 @@ namespace SQLTemplateUI
             this.SQLServer.Name = "SQLServer";
             this.SQLServer.Size = new System.Drawing.Size(154, 20);
             this.SQLServer.TabIndex = 27;
-            // 
-            // ZipButton
-            // 
-            this.ZipButton.Location = new System.Drawing.Point(296, 140);
-            this.ZipButton.Name = "ZipButton";
-            this.ZipButton.Size = new System.Drawing.Size(68, 26);
-            this.ZipButton.TabIndex = 28;
-            this.ZipButton.Text = "Zip Backup";
-            this.ZipButton.UseVisualStyleBackColor = true;
-            this.ZipButton.Visible = false;
-            this.ZipButton.Click += new System.EventHandler(this.ZipButton_Click);
             // 
             // label9
             // 
@@ -321,7 +311,6 @@ namespace SQLTemplateUI
             this.Controls.Add(this.button1);
             this.Controls.Add(this.siteID);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.ZipButton);
             this.Controls.Add(this.SQLServer);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.progressBar1);
@@ -345,7 +334,7 @@ namespace SQLTemplateUI
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "All In One Upsize Tool v1.6";
+            this.Text = "All In One Upsize Tool v1.6.1";
             ((System.ComponentModel.ISupportInitialize)(this.dbSelect)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.siteID)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.threads)).EndInit();
@@ -364,7 +353,6 @@ namespace SQLTemplateUI
         private System.Windows.Forms.Button Generate;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.NumericUpDown dbSelect;
-        private System.Windows.Forms.TextBox outputText;
         private System.Windows.Forms.TextBox sqlpathBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button sqlButton;
@@ -377,12 +365,12 @@ namespace SQLTemplateUI
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox SQLServer;
-        private System.Windows.Forms.Button ZipButton;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.NumericUpDown siteID;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.NumericUpDown threads;
         private System.Windows.Forms.Label label10;
+        public System.Windows.Forms.TextBox outputText;
     }
 }
 
