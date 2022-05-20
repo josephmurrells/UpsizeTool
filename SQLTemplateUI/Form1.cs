@@ -24,6 +24,7 @@ namespace SQLTemplateUI
         {
             InitializeComponent();
             SQLServer.Text = Properties.Settings.Default.SQLPath;
+            threads.Text = Properties.Settings.Default.Threads;
         }
 
         private void sqlButton_Click(object sender, EventArgs e)
@@ -79,6 +80,7 @@ namespace SQLTemplateUI
             }
 
             progressBar1.MarqueeAnimationSpeed = 10;
+
             await Task.Run(() =>
             {
                 elapsedTime = UpsizeMe.ProcessRun();
@@ -116,11 +118,26 @@ namespace SQLTemplateUI
             }
 
             Neymar.OpenNeymar(stagingBox.Text, slugBox.Text, siteID.Text, sqlpathBox.Text);
+
+            progressBar1.Style = ProgressBarStyle.Marquee;
         }
 
         private void button1_Click_1(object sender, EventArgs e)
         {
             ServiceRestart.RestartService();
+        }
+
+        private void exactData_TextChanged(object sender, EventArgs e)
+        {
+            if (Directory.Exists(exactData.Text))
+            {
+                var dir = new DirectoryInfo(exactData.Text);
+                double totalsize = dir.GetFiles().Sum(file => file.Length);
+                totalsize = +Math.Ceiling(totalsize / 1024 / 1024 / 1024);
+                outputText.Text = $"EXACTData is {totalsize}GB (rounded up)";
+                dbSelect.Text = Convert.ToString(totalsize);
+            }
+
         }
     }
     }

@@ -60,6 +60,7 @@ namespace SQLTemplateUI
             ts.Milliseconds / 10);
 
             Properties.Settings.Default.SQLPath = SQLServer;
+            Properties.Settings.Default.Threads = Threads;
             Properties.Settings.Default.Save();
 
             return elapsedTime;
