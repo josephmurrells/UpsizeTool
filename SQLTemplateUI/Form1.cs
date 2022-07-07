@@ -76,7 +76,7 @@ namespace SQLTemplateUI
 
             if (stagingBox.Text == "production")
             {
-                DialogResult dialog = MessageBox.Show($"APPT6 Was Last Modified :{File.GetLastWriteTime($"{exactData.Text}\\APPT6.txt")}, Continue?", "Continue?", MessageBoxButtons.YesNo);
+                DialogResult dialog = MessageBox.Show($"APPT6 Was Last Modified :{File.GetLastWriteTime($"{exactData.Text}\\APPT6.fs5")}, Continue?", "Continue?", MessageBoxButtons.YesNo);
                 if (dialog == DialogResult.No)
                 {
                     return;
