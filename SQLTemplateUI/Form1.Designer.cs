@@ -334,7 +334,7 @@ namespace SQLTemplateUI
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "All In One Upsize Tool v1.6.1";
+            this.Text = "All In One Upsize Tool v1.6.2";
             ((System.ComponentModel.ISupportInitialize)(this.dbSelect)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.siteID)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.threads)).EndInit();

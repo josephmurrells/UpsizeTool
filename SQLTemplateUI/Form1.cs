@@ -67,6 +67,22 @@ namespace SQLTemplateUI
         }
         private async void AllInOne_Click(object sender, EventArgs e)
         {
+            var ErrorCheck = new ErrorChecking(slugBox.Text, sqlpathBox.Text, exactData.Text, stagingBox.Text, dbSelect.Text, SQLServer.Text);
+            
+            if (ErrorCheck.ErrorCheck() == 0)
+            {
+                return;
+            }
+
+            if (stagingBox.Text == "production")
+            {
+                DialogResult dialog = MessageBox.Show($"APPT6 Was Last Modified :{File.GetLastWriteTime($"{exactData.Text}\\APPT6.fs5")}, Continue?", "Continue?", MessageBoxButtons.YesNo);
+                if (dialog == DialogResult.No)
+                {
+                    return;
+                }
+            }
+
             string newLine = Environment.NewLine;
             var UpsizeMe = new MainProcess(slugBox.Text,sqlpathBox.Text, SQLServer.Text,stagingBox.Text, dbSelect.Text, exactData.Text, threads.Text, this);
             var ZipMe = new Zip(sqlpathBox.Text, slugBox.Text, stagingBox.Text);
@@ -78,12 +94,6 @@ namespace SQLTemplateUI
             sqlButton.Enabled = false;
             exactButton.Enabled = false;
 
-            var ErrorCheck = new ErrorChecking(slugBox.Text, sqlpathBox.Text, exactData.Text, stagingBox.Text, dbSelect.Text, SQLServer.Text);
-
-            if (ErrorCheck.ErrorCheck() == 0)
-            {
-                return;
-            }
 
             progressBar1.MarqueeAnimationSpeed = 10;
 
